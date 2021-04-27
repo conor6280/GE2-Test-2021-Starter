@@ -13,6 +13,9 @@ public class BallPickup : MonoBehaviour
         {
             other.transform.parent = Dog.transform;
             hasBall = true;
+            Dog.GetComponent<Arrive>().enabled = true;
+            Dog.GetComponent<Seek>().enabled = false;
+
         }
 
         //gameObject.transform.parent = null;

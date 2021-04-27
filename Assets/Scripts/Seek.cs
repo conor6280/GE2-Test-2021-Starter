@@ -10,6 +10,11 @@ public class Seek : SteeringBehaviour
 
     public Vector3 target = Vector3.zero;
 
+    private void Start()
+    {
+        enabled = false;
+    }
+
     public void OnDrawGizmos()
     {
         if (isActiveAndEnabled && Application.isPlaying)
