@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BallPickup : MonoBehaviour
 {
+    public GameObject Player;
     public GameObject Dog;
     public bool hasBall = false;
     public Collider collider;
@@ -19,6 +20,10 @@ public class BallPickup : MonoBehaviour
 
         }
 
-        //gameObject.transform.parent = null;
+
+        if (Vector3.Distance(Player.transform.position, Dog.transform.position) < 10)
+        {
+            gameObject.transform.parent = null;
+        } 
     }
 }

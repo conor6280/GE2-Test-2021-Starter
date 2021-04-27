@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Seek : SteeringBehaviour
 {
-    public GameObject targetGameObject = null;
+    public GameObject targetGameObject;
 
     public Vector3 target;
 

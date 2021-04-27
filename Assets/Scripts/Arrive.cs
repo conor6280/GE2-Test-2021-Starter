@@ -30,10 +30,5 @@ public class Arrive : SteeringBehaviour
         {
             targetPosition = new Vector3(targetGameObject.transform.position.x, 0f, targetGameObject.transform.position.z);
         }
-
-        if (Vector3.Distance(player.transform.position, dog.transform.position) < 10)
-        {
-            gameObject.transform.parent = null;
-        }
     }
 }
