@@ -10,21 +10,27 @@ public class BallThrow : MonoBehaviour
     public GameObject grenade;
     public float speed = 20;
     public Transform Hand;
-    public GameObject Ball;
+    public AudioSource Bork;
+    public bool haveBall = true;
 
-    void Update()
-    {
-        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
-        {
-            nextTimeToFire = Time.time + 1 / fireRate;
-            Shoot();
-        }
-    }
+
     public void Shoot()
     {
         GameObject gren = Instantiate(grenade, Hand.position, Hand.rotation) as GameObject;
         gren.GetComponent<Rigidbody>().AddForce(Hand.forward * speed, ForceMode.Impulse);
-        Dog.GetComponentInChildren<Seek>().targetGameObject = Ball;
         Dog.GetComponent<Seek>().enabled = true;
+        Dog.GetComponentInChildren<Seek>().ball = gren;
+        Bork.Play();
     }
+    void Update()
+    {
+        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && haveBall == true)
+        {
+            nextTimeToFire = Time.time + 1 / fireRate;
+            Shoot();
+            haveBall = false;
+            DoggoStates.state = DoggoStates.States.Seek;
+        }
+    }
+
 }

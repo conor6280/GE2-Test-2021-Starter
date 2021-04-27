@@ -421,6 +421,8 @@ GameObject:
   - component: {fileID: 963194229}
   - component: {fileID: 963194231}
   - component: {fileID: 963194230}
+  - component: {fileID: 963194233}
+  - component: {fileID: 963194232}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -487,7 +489,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: -15}
+  m_LocalPosition: {x: 0, y: 3, z: -17.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -593,7 +595,8 @@ MonoBehaviour:
   grenade: {fileID: 3627371103750170129, guid: b471fff3b0213bb4882085e357ee2c4e, type: 3}
   speed: 20
   Hand: {fileID: 963194228}
-  Ball: {fileID: 3627371103750170129, guid: b471fff3b0213bb4882085e357ee2c4e, type: 3}
+  Bork: {fileID: 1503941577}
+  haveBall: 1
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -606,6 +609,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f09794295de1983439cdd1088ccd40da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &963194232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d1cb83c6e94c1447927a3366338a39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 963194225}
+  Dog: {fileID: 1503941570}
+  pickup: {fileID: 1296423585}
+--- !u!136 &963194233
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.2928963
+  m_Height: 6.521747
+  m_Direction: 1
+  m_Center: {x: 0.079289675, y: -1.4712622, z: 0.015857697}
 --- !u!1 &1181318721
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,9 +679,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1181318721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df9abdc16a6d6624d9b99b72bafa2fee, type: 3}
+  m_Script: {fileID: 11500000, guid: f9e95a5bbf063a6418029ad60856988c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tailWagRate: 3
+  tail: {fileID: 1181318722}
+  tailRadius: 20
 --- !u!1 &1296423582
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,8 +694,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1296423583}
-  - component: {fileID: 1296423584}
   - component: {fileID: 1296423585}
+  - component: {fileID: 1296423584}
   m_Layer: 0
   m_Name: ballAttach
   m_TagString: Untagged
@@ -682,8 +717,8 @@ Transform:
   m_Father: {fileID: 1461995659}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1296423584
-SphereCollider:
+--- !u!65 &1296423584
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -693,8 +728,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.3089116, y: 1.574433, z: 0.33242333}
+  m_Center: {x: -0.013558865, y: 0.28184313, z: 0.0021841526}
 --- !u!114 &1296423585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,9 +742,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d9ff008764a14041a2cc2359952c4b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 963194225}
   Dog: {fileID: 1503941570}
+  DogMouth: {fileID: 1296423583}
+  Ball: {fileID: 3627371103750170129, guid: b471fff3b0213bb4882085e357ee2c4e, type: 3}
   hasBall: 0
-  collider: {fileID: 1296423584}
+  Mycollider: {fileID: 1296423584}
 --- !u!1 &1461995654
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,7 +778,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 40b836a8dc134614cbca8261c03efcde, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 867857052f160244d9986e424e054ba1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -916,6 +954,7 @@ GameObject:
   - component: {fileID: 1503941573}
   - component: {fileID: 1503941572}
   - component: {fileID: 1503941571}
+  - component: {fileID: 1503941574}
   m_Layer: 0
   m_Name: dog
   m_TagString: Untagged
@@ -940,6 +979,7 @@ MonoBehaviour:
   boid: {fileID: 0}
   dog: {fileID: 1503941570}
   player: {fileID: 963194225}
+  Bork: {fileID: 1461995655}
   targetPosition: {x: 0, y: 0, z: 0}
   slowingDistance: 15
   targetGameObject: {fileID: 963194225}
@@ -958,7 +998,7 @@ MonoBehaviour:
   weight: 1
   force: {x: 0, y: 0, z: 0}
   boid: {fileID: 0}
-  targetGameObject: {fileID: 0}
+  ball: {fileID: 3627371103750170129, guid: b471fff3b0213bb4882085e357ee2c4e, type: 3}
   target: {x: 0, y: 0, z: 0}
 --- !u!114 &1503941573
 MonoBehaviour:
@@ -980,6 +1020,22 @@ MonoBehaviour:
   banking: 0.1
   maxSpeed: 5
   maxForce: 10
+--- !u!54 &1503941574
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503941570}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &1503941576
 Transform:
   m_ObjectHideFlags: 0
@@ -988,7 +1044,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503941570}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1461995659}

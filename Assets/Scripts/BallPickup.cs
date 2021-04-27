@@ -6,24 +6,25 @@ public class BallPickup : MonoBehaviour
 {
     public GameObject Player;
     public GameObject Dog;
-    public bool hasBall = false;
-    public Collider collider;
+    public Transform DogMouth;
+    public GameObject Ball;
 
-    private void OnTriggerEnter(Collider collider)
+    public bool hasBall = false;
+    public Collider Mycollider;
+
+    private void Start()
     {
-        if (collider.gameObject.tag == "Ball" && hasBall == false)
+        hasBall = false;
+    }
+
+    private void OnTriggerEnter(Collider Mycollider)
+    {
+        if (Mycollider.gameObject.tag == "Ball" && hasBall == false)
         {
-            collider.transform.parent = Dog.transform;
+            Mycollider.transform.parent = DogMouth.transform;
             hasBall = true;
-            Dog.GetComponent<Arrive>().enabled = true;
-            Dog.GetComponent<Seek>().enabled = false;
+            DoggoStates.state = DoggoStates.States.Arrive;
 
         }
-
-
-        if (Vector3.Distance(Player.transform.position, Dog.transform.position) < 10)
-        {
-            gameObject.transform.parent = null;
-        } 
     }
 }
