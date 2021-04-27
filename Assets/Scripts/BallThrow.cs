@@ -16,6 +16,7 @@ public class BallThrow : MonoBehaviour
         {
             nextTimeToFire = Time.time + 1 / fireRate;
             Shoot();
+            //GetComponent<Seek>().
         }
     }
     public void Shoot()

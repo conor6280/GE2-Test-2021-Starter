@@ -420,6 +420,7 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   - component: {fileID: 963194231}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -504,7 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a24a86df40fb03d40950b51a5f946f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 963194225}
   speed: 50
   lookSpeed: 150
   allowPitch: 1
@@ -575,6 +576,22 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aebc1a6e0779464a990f7e504a6134d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 1
+  grenade: {fileID: 3627371103750170129, guid: b471fff3b0213bb4882085e357ee2c4e, type: 3}
+  speed: 20
+  Hand: {fileID: 963194228}
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,6 +884,7 @@ GameObject:
   - component: {fileID: 1503941573}
   - component: {fileID: 1503941572}
   - component: {fileID: 1503941571}
+  - component: {fileID: 1503941574}
   m_Layer: 0
   m_Name: dog
   m_TagString: Untagged
@@ -881,7 +899,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503941570}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d60a1b42aa563b4fab355ebfdf12f6c, type: 3}
   m_Name: 
@@ -889,9 +907,11 @@ MonoBehaviour:
   weight: 1
   force: {x: 0, y: 0, z: 0}
   boid: {fileID: 0}
+  dog: {fileID: 0}
+  player: {fileID: 0}
   targetPosition: {x: 0, y: 0, z: 0}
   slowingDistance: 15
-  targetGameObject: {fileID: 0}
+  targetGameObject: {fileID: 963194225}
 --- !u!114 &1503941572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -907,7 +927,7 @@ MonoBehaviour:
   weight: 1
   force: {x: 0, y: 0, z: 0}
   boid: {fileID: 0}
-  targetGameObject: {fileID: 0}
+  targetGameObject: {fileID: 3627371103750170129, guid: b471fff3b0213bb4882085e357ee2c4e, type: 3}
   target: {x: 0, y: 0, z: 0}
 --- !u!114 &1503941573
 MonoBehaviour:
@@ -929,6 +949,20 @@ MonoBehaviour:
   banking: 0.1
   maxSpeed: 5
   maxForce: 10
+--- !u!114 &1503941574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503941570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d9ff008764a14041a2cc2359952c4b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dog: {fileID: 1503941570}
+  hasBall: 0
 --- !u!4 &1503941576
 Transform:
   m_ObjectHideFlags: 0

@@ -14,5 +14,7 @@ public class BallPickup : MonoBehaviour
             other.transform.parent = Dog.transform;
             hasBall = true;
         }
+
+        //gameObject.transform.parent = null;
     }
 }

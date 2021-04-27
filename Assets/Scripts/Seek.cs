@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class Seek : SteeringBehaviour
 {
-    public GameObject _ball;
-
     public GameObject targetGameObject = null;
 
     public Vector3 target = Vector3.zero;
@@ -35,11 +33,6 @@ public class Seek : SteeringBehaviour
         if (targetGameObject != null)
         {
             target = targetGameObject.transform.position;
-
-            if(_ball != null)
-            {
-                target = _ball.transform.position;
-            }
         }
     }
 }
