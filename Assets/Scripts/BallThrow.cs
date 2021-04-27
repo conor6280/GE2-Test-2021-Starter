@@ -10,6 +10,7 @@ public class BallThrow : MonoBehaviour
     public GameObject grenade;
     public float speed = 20;
     public Transform Hand;
+    public GameObject Ball;
 
     void Update()
     {
@@ -17,12 +18,13 @@ public class BallThrow : MonoBehaviour
         {
             nextTimeToFire = Time.time + 1 / fireRate;
             Shoot();
-            Dog.GetComponent<Seek>().enabled = true;
         }
     }
     public void Shoot()
     {
         GameObject gren = Instantiate(grenade, Hand.position, Hand.rotation) as GameObject;
         gren.GetComponent<Rigidbody>().AddForce(Hand.forward * speed, ForceMode.Impulse);
+        Dog.GetComponentInChildren<Seek>().targetGameObject = Ball;
+        Dog.GetComponent<Seek>().enabled = true;
     }
 }

@@ -8,7 +8,7 @@ public class Seek : SteeringBehaviour
 {
     public GameObject targetGameObject = null;
 
-    public Vector3 target = Vector3.zero;
+    public Vector3 target;
 
     private void Start()
     {
@@ -37,7 +37,7 @@ public class Seek : SteeringBehaviour
     {
         if (targetGameObject != null)
         {
-            target = targetGameObject.transform.position;
+            target = new Vector3(targetGameObject.transform.position.x, 0f, targetGameObject.transform.position.z);
         }
     }
 }

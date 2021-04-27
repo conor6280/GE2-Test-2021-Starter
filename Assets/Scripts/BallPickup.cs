@@ -6,12 +6,13 @@ public class BallPickup : MonoBehaviour
 {
     public GameObject Dog;
     public bool hasBall = false;
+    public Collider collider;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (other.gameObject.tag == "Ball" && hasBall == false)
+        if (collider.gameObject.tag == "Ball" && hasBall == false)
         {
-            other.transform.parent = Dog.transform;
+            collider.transform.parent = Dog.transform;
             hasBall = true;
             Dog.GetComponent<Arrive>().enabled = true;
             Dog.GetComponent<Seek>().enabled = false;
