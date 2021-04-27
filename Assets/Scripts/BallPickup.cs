@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BallPickup : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject Dog;
+    public bool hasBall = false;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.tag == "Ball" && hasBall == false)
+        {
+            other.transform.parent = Dog.transform;
+            hasBall = true;
+        }
     }
 }

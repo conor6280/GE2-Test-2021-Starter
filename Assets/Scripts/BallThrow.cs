@@ -12,7 +12,7 @@ public class BallThrow : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("Space") && Time.time >= nextTimeToFire)
+        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
         {
             nextTimeToFire = Time.time + 1 / fireRate;
             Shoot();
